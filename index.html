@@ -44,8 +44,8 @@
 	}
 
 	#q-form div {
-		margin-left: 25%;
-		margin-right: 25%;
+		margin-left: 7%;
+		margin-right: 7%;
 	}
 
 	.right, .wrong {
@@ -65,6 +65,12 @@
 		background-image: linear-gradient(to right, yellow, gold);
 	}
 
+	@media only screen and (min-width: 600px) {
+		#q-form div {
+		margin-left: 25%;
+		margin-right: 25%;
+	}
+	}
 </style>
 <body>
 <div id="container" class="container">
@@ -176,8 +182,7 @@
 
 	$('#enter').click(function() {
 		var key = document.getElementById("key").value;
-		if(key != 'kbc' || 'kbc2') {
-			alert(key);
+		if(key === 'kbc' || key === 'kbc2') {
 			var name = document.getElementById("name").value;
 			document.getElementById("container").innerHTML=document.getElementById("kbc-screen").innerHTML;
 			$("body").css("background", "linear-gradient(to right, midnightblue, blue, purple)");
@@ -185,7 +190,7 @@
 			$("he").css("background", "linear-gradient(to right, midnightblue, blue, purple)");
 			startTimer(1);
 		} else {
-			alert('No key');
+			alert('Wrong key');
 		}
 	});
 
@@ -194,11 +199,9 @@
 		console.log(que);
 		switch(que) {
 			case 2: 
-				alert(que);
 				document.getElementById("q-container").innerHTML=document.getElementById("q-2").innerHTML;
 				break;
-			case 3: 
-				alert(que);
+			case 3:
 				document.getElementById("q-container").innerHTML=document.getElementById("q-3").innerHTML;
 				break;
 			case 4: document.getElementById("q-container").innerHTML=document.getElementById("q-4").innerHTML;
@@ -220,7 +223,7 @@
     			<div style="margin-top:5%; margin-bottom: 15%;">
     			<center>
     				<q>One who tries..is a winner in himself</q>
-    				<img id="board-icon" src="/kbc-icon.png" width="20%" style="float: right; top:-10%;" />
+    				<img id="board-icon" src="kbc-icon.png" width="20%" style="float: right; top:-10%;" />
     				<h2>Your winning score of Gita KBC is as follows:</h2>
     				<h4>Right answer: ${rtclick}</h4>
     				<h4>Wrong answer: ${wgclick}</h4>   
