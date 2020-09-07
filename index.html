@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gita KBC</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+	body {
+		padding: 0;
+		margin: 0;
+		background: linear-gradient(to right, black, purple);
+		color: white;
+		font-size: 20px;
+	}
+	
+	.btn {
+		font-size: 17px;
+	}
+	.form-control {
+		text-align: center;
+	}
+	#timer-cover {
+		margin-top: 100px;
+		margin-bottom: 40px;
+	}
+
+	#timer {
+		padding: 30px;
+		border-radius: 80px;
+		background-image: radial-gradient(white, black, black, white, white);
+		font-weight: bolder;
+		font-size: 1.5em;
+	}
+
+	.que-d {
+		border: 2px solid white;
+		padding: 10px;
+		border-radius: 20px;
+		border-style: double;
+	}
+
+	#q-form div {
+		margin-left: 25%;
+		margin-right: 25%;
+	}
+
+	.right, .wrong {
+		border: 2px solid white;
+		padding: 5px;
+		border-radius: 20px;
+		background: transparent;
+		outline: none;
+		transition: 2sec;
+	}
+
+	.right:hover, .wrong:hover {
+		background-image: linear-gradient(to right, yellow, gold);
+	}
+
+	.right:active, .wrong:active {
+		background-image: linear-gradient(to right, yellow, gold);
+	}
+
+</style>
+<body>
+<div id="container" class="container">
+
+	<div id="player">
+    <audio src="kbc-begin.mp3" autoplay>
+    </audio>
+	</div>
+	<div id="login">
+  		<center>
+  			<div id="icon">
+  				<img id="login-icon" src="kbc-icon.png" width="30%" />
+  			</div>
+  			<form>
+  				<div class="form-group">
+  					<label type="text">Your Name:</label>
+  					<strong><b><input type="text" name="name" id="name" class="form-control" value=""/></b></strong>
+  				</div>
+  				<div class="form-group">
+  					<label for="enter">Enter Key: </label>
+  					<strong><b><input type="text" name="key" id="key" class="form-control" value=""/></b></strong>
+  				</div>
+  				<button type="button" id="enter" class="btn btn-primary">Enter</button>
+    		</form>
+  		</center>
+    </div>
+    <div id="kbc-screen" style="display: none; border: 1px solid pink;">
+    	<center>
+    		<p id="heading"></p>
+    		<div id="q-container">
+    			<p id="timer-cover"><a style="color: white;" id="timer">0</a></p>
+    			<form id="q-form">
+    		<label class="que-d" for="question">Que 1.) Why Lord Shree Krishna said bhagwat Geeta to Arjuna? </label>
+    		<br />
+    		<hr />
+    		<div >
+  				<button onclick="nextRight()" type="button" class="btn btn-primary right">A. To answer his devotees miseries</button>
+    			<button onclick="nextWrong()" type="button" class="btn btn-primary wrong">B. To answer his devotees miseries</button>
+    			<button onclick="nextWrong()" type="button" class="btn btn-primary wrong">C. To answer his devotees miseries</button>
+    			<button onclick="nextWrong()" type="button" class="btn btn-primary wrong">D. To answer his devotees miseries</button>
+    		</div>
+    			</form>
+    		</div>
+    		<div id="q-2" style="display: none;">
+    			<p id="timer-cover"><a style="color: white;" id="timer">0</a></p>
+    			<form id="q-form">
+    		<label class="que-d" for="question">Que 2.) Why Hare Krishna maha mantra is important for spirituality? </label>
+    		<br />
+    		<hr />
+    		<div>
+  				<button onclick="nextWrong()" onclick="nextClick()" type="button" class="btn btn-primary right">A. To purify material mind senses</button>
+    			<button onclick="nextRight()" type="button" class="btn btn-primary wrong">B. To purify material mind senses</button>
+    			<button onclick="nextWrong()" type="button" class="btn btn-primary wrong">C. To purify material mind senses</button>
+    			<button onclick="nextWrong()" type="button" class="btn btn-primary wrong">D. To purify material mind senses</button>
+    			</div>
+    			</form>
+    		</div>
+    		<div id="q-3" style="display: none;">
+    			<p id="timer-cover"><a style="color: white;" id="timer">0</a></p>
+    			<form id="q-form">
+    		<label class="que-d" for="question">Que 3.) Why Lord Shree Krishna said bhagwat Geeta to Arjuna? </label>
+    		<br />
+    		<hr />
+    		<div>
+  				<button onclick="nextWrong()" type="button" class="btn btn-primary right">A. To answer his devotees miseries</button>
+    			<button onclick="nextWrong()" type="button" class="btn btn-primary wrong">B. To answer his devotees miseries</button>
+    			<button onclick="nextRight()" type="button" class="btn btn-primary wrong">C. To answer his devotees miseries</button>
+    			<button onclick="nextWrong()" type="button" class="btn btn-primary wrong">D. To answer his devotees miseries</button>
+    			</div>
+    			</form>
+    		</div>
+    		<div id="q-4" style="display: none;">
+    			<p id="timer-cover"><a style="color: white;" id="timer">0</a></p>
+    			<form id="q-form">
+    			<label class="que-d" for="question">Que 4.) Why Lord Shree Krishna said bhagwat Geeta to Arjuna? </label>
+    			<br />
+    			<hr />
+    			<div>
+  				<button onclick="wgShowResult()" type="button" class="btn btn-primary right">A. To answer his devotees miseries</button>
+    			<button onclick="wgShowResult()" type="button" class="btn btn-primary wrong">B. To answer his devotees miseries</button>
+    			<button onclick="wgShowResult()" type="button" class="btn btn-primary wrong">C. To answer his devotees miseries</button>
+    			<button onclick="rtShowResult()" type="button" class="btn btn-prim0ary wrong">D. To answer his devotees miseries</button>
+    			</div>
+    			<strong>This is Last Question.</strong>
+    			</form>
+    		</div>
+    	</center>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+	var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0;
+
+	function startTimer(op) {
+		if(op==1) {
+			const a = setInterval(timer, 1000);
+			function timer() {
+				i++;
+				$('#timer').html(i);
+			}
+		} else {
+			clearInterval(timer);
+			timetaken+=i;
+			i=0;
+			console.log("hello");
+		}
+	}
+
+	$('#enter').click(function() {
+		var key = document.getElementById("key").value;
+		if(key != 'kbc' || 'kbc2') {
+			alert(key);
+			var name = document.getElementById("name").value;
+			document.getElementById("container").innerHTML=document.getElementById("kbc-screen").innerHTML;
+			$("body").css("background", "linear-gradient(to right, midnightblue, blue, purple)");
+			document.getElementById("heading").innerHTML="Best wishes to "+name+"!";
+			$("he").css("background", "linear-gradient(to right, midnightblue, blue, purple)");
+			startTimer(1);
+		} else {
+			alert('No key');
+		}
+	});
+
+	function nextClick() {
+		que++;
+		console.log(que);
+		switch(que) {
+			case 2: 
+				alert(que);
+				document.getElementById("q-container").innerHTML=document.getElementById("q-2").innerHTML;
+				break;
+			case 3: 
+				alert(que);
+				document.getElementById("q-container").innerHTML=document.getElementById("q-3").innerHTML;
+				break;
+			case 4: document.getElementById("q-container").innerHTML=document.getElementById("q-4").innerHTML;
+			break;
+			default: alert("nothing matched");
+		}
+	}
+	function rightscore() {
+		rtclick++;
+		startTimer(0);
+	}
+	function wrongscore() {
+		wgclick++;
+		startTimer(0);
+	}
+	function showResult() {
+		var board="";
+		board=`<form style="border: 2px solid white; opacity: 0.3; background: black; margin-top: 20%">
+    			<div style="margin-top:5%; margin-bottom: 15%;">
+    			<center>
+    				<q>One who tries..is a winner in himself</q>
+    				<img id="board-icon" src="kbc-icon.png" width="20%" style="float: right; top:-10%;" />
+    				<h2>Your winning score of Gita KBC is as follows:</h2>
+    				<h4>Right answer: ${rtclick}</h4>
+    				<h4>Wrong answer: ${wgclick}</h4>   
+    				<h4>Time Taken: ${timetaken}</h4>
+    			
+    			<center>
+    			</div>
+    			</form>`;
+    document.getElementById("container").innerHTML=board;
+	}
+	function nextRight() {
+		rightscore();
+		nextClick();
+	}
+	function nextWrong() {
+		wrongscore();
+		nextClick();
+	}
+	function rtShowResult() {
+		rightscore();
+		startTimer(0);
+		showResult();
+	}
+	function wgShowResult() {
+		wrongscore();
+		startTimer(0);
+		showResult();
+	}
+</script>
+</body>
+</html>
