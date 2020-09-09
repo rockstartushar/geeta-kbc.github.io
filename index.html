@@ -84,6 +84,7 @@
 
 	}
 </style>
+<!-- https://rockstartushar.github.io/geeta-kbc.github.io/ -->
 <body onload="playKbcAudio()">
 <div id="container" class="container">
 	<div id="player">
@@ -176,6 +177,12 @@
 <script type="text/javascript">
 
 	var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0;
+
+	if ("serviceWork" in navigator) {
+		window.addEventListener("load", function() {
+			navigator.serviceWorker.register("/serviceWorker.js").then(res => console.log('service worker regiseter')).catch(err => console.log("service worker not registered", err))
+		})
+	}
 
 	function playKbcAudio() {
 		var kbcaudio = document.getElementById("kbc-audio");
