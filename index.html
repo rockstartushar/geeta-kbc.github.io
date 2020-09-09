@@ -85,13 +85,8 @@
 	}
 </style>
 <!-- https://rockstartushar.github.io/geeta-kbc.github.io/ -->
-<body onload="playKbcAudio()">
+<body>
 <div id="container" class="container">
-	<div id="player">
-    		<audio id="kbc-audio">
-    				<source src="kbc-begin.mp3" type="audio/mp3">
-			</audio>
-	</div>
 	<div id="login">
   		<center>
   			<div id="icon">
@@ -176,17 +171,36 @@
 
 <script type="text/javascript">
 
-	var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0;
+	var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0, audio1=0;
+	document.getElementById("name").addEventListener("mousemove", function () {
+		audio1 = document.createElement("AUDIO");
+		document.body.appendChild(audio1);
+		audio1.src = "kbc-begin.mp3";
+    	audio1.play();
+	});
+
+	function playTimer() {
+		audio1.pause();
+	 	audio1.remove();
+		audio1 = document.createElement("AUDIO");
+		document.body.appendChild(audio1);
+		audio1.src = "kbc-timer.mp3";
+    	audio1.play();
+	}
+
+	function playFlute() {
+		audio1.pause();
+	 	audio1.remove();
+		audio1 = document.createElement("AUDIO");
+		document.body.appendChild(audio1);
+		audio1.src = "krshn-flute.mp3";
+    	audio1.play();
+	}
 
 	if ("serviceWorker" in navigator) {
 		window.addEventListener("load", function() {
 			navigator.serviceWorker.register("serviceWorker.js").then(res => console.log('service worker regiseter')).catch(err => console.log("service worker not registered", err))
 		})
-	}
-
-	function playKbcAudio() {
-		var kbcaudio = document.getElementById("kbc-audio");
-		kbcaudio.play();
 	}
 
 	function startTimer(op) {
@@ -200,6 +214,7 @@
 			clearInterval(timer);
 			timetaken+=i;
 			i=0;
+			playTimer();
 			console.log("hello");
 		}
 	}
@@ -207,12 +222,15 @@
 	$('#enter').click(function() {
 		var key = document.getElementById("key").value;
 		if(key === 'kbc' || key === 'kbc2') {
+			audio1.pause();
+			audio1.remove();
 			var name = document.getElementById("name").value;
 			document.getElementById("container").innerHTML=document.getElementById("kbc-screen").innerHTML;
 			$("body").css("background", "linear-gradient(to right, midnightblue, blue, purple)");
 			document.getElementById("heading").innerHTML="Best wishes to "+name+"!";
 			$("he").css("background", "linear-gradient(to right, midnightblue, blue, purple)");
 			startTimer(1);
+			playTimer();
 		} else {
 			alert('Wrong key');
 		}
@@ -251,12 +269,13 @@
     				<h2>Your winning score of Gita KBC is as follows:</h2>
     				<h4>Right answer: ${rtclick}</h4>
     				<h4>Wrong answer: ${wgclick}</h4>   
-    				<h4>Time Taken: ${timetaken}</h4>
+    				<h4>Time Taken: ${timetaken} seconds</h4>
     			
     			<center>
     			</div>
     			</form>`;
     document.getElementById("container").innerHTML=board;
+    playFlute();
 	}
 	function nextRight() {
 		rightscore();
