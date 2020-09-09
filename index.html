@@ -1,12 +1,17 @@
 <!DOCTYPE html> 
 <html lang="en">
 <head>
-  <title>Geeta KBC</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="menifest" href="menifest.json" />
+	<link rel="apple-touch-icon" href="dgmc.png" />
+	<meta name="apple-mobile-web-app-status-bar" content="#db4938" />
+	<meta name="theme-color" color="#db4938" />
+  	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  	<title>Doon Gita Meditation Classes</title>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <style type="text/css">
 	body {
@@ -23,6 +28,7 @@
 	.form-control {
 		text-align: center;
 	}
+
 	#timer-cover {
 		margin-top: 100px;
 		margin-bottom: 40px;
@@ -78,14 +84,12 @@
 
 	}
 </style>
-<body>
+<body onload="playKbcAudio()">
 <div id="container" class="container">
-	
 	<div id="player">
-		<iframe src="kbc-begin.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
-    <audio id="player" autoplay loop>
-    <source src="kbc-begin.mp3" type="audio/mp3">
-</audio>
+    		<audio id="kbc-audio">
+    				<source src="kbc-begin.mp3" type="audio/mp3">
+			</audio>
 	</div>
 	<div id="login">
   		<center>
@@ -171,7 +175,12 @@
 
 <script type="text/javascript">
 
-	var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0;
+	var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0;
+
+	function playKbcAudio() {
+		var kbcaudio = document.getElementById("kbc-audio");
+		kbcaudio.play();
+	}
 
 	function startTimer(op) {
 		if(op==1) {
