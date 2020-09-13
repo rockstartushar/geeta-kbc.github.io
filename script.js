@@ -6,6 +6,16 @@ var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0, audio1=0;
     	audio1.play();
 	});
 
+	function playQ() {
+		audio1.pause();
+	 	audio1.remove();
+		audio1 = document.createElement("AUDIO");
+		document.body.appendChild(audio1);
+		audio1.src = "kbc-lock.mp3";
+    	audio1.play();
+    	playTimer();
+	}
+
 	function playTimer() {
 		audio1.pause();
 	 	audio1.remove();
@@ -61,7 +71,7 @@ var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0, audio1=0;
 			audienceImg[i].addEventListener("click", llNotAvailable);
 		}
 
-		switch (a[qn]) {
+		switch (a[qn-1]) {
 			case 1: document.getElementById("op1").innerHTML=39;
 			document.getElementById("op2").innerHTML=36;
 			document.getElementById("op3").innerHTML=5;
@@ -117,6 +127,7 @@ var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0, audio1=0;
 			document.getElementById("heading").innerHTML="Best wishes to "+name+"!";
 			$("he").css("background", "linear-gradient(to right, midnightblue, blue, purple)");
 			startTimer(1);
+			playQ();
 			playTimer();
 		} else {
 			alert('Wrong key');
@@ -125,7 +136,7 @@ var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0, audio1=0;
 
 	function nextClick() {
 		que++;
-		console.log(que);
+		console .log(que);
 		switch(que) {
 			case 2: 
 				document.getElementById("q-container").innerHTML=document.getElementById("q-2").innerHTML;
@@ -157,6 +168,57 @@ var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0, audio1=0;
 			break;
 			case 15: document.getElementById("q-container").innerHTML=document.getElementById("q-15").innerHTML;
 			break;
+			case 16: document.getElementById("q-container").innerHTML=document.getElementById("q-16").innerHTML;
+			break;
+			case 17: document.getElementById("q-container").innerHTML=document.getElementById("q-17").innerHTML;
+			break;
+			case 18: document.getElementById("q-container").innerHTML=document.getElementById("q-18").innerHTML;
+			break;
+			case 19: document.getElementById("q-container").innerHTML=document.getElementById("q-19").innerHTML;
+			break;
+			case 20: document.getElementById("q-container").innerHTML=document.getElementById("q-20").innerHTML;
+			break;
+			case 21: document.getElementById("q-container").innerHTML=document.getElementById("q-21").innerHTML;
+			break;
+			case 22: document.getElementById("q-container").innerHTML=document.getElementById("q-22").innerHTML;
+			break;
+			case 23: document.getElementById("q-container").innerHTML=document.getElementById("q-23").innerHTML;
+			break;
+			case 24: document.getElementById("q-container").innerHTML=document.getElementById("q-24").innerHTML;
+			break;
+			case 25: document.getElementById("q-container").innerHTML=document.getElementById("q-25").innerHTML;
+			break;
+			case 26: document.getElementById("q-container").innerHTML=document.getElementById("q-26").innerHTML;
+			break;
+			case 27: document.getElementById("q-container").innerHTML=document.getElementById("q-27").innerHTML;
+			break;
+			case 28: document.getElementById("q-container").innerHTML=document.getElementById("q-28").innerHTML;
+			break;
+			case 29: document.getElementById("q-container").innerHTML=document.getElementById("q-15").innerHTML;
+			break;
+			case 30: document.getElementById("q-container").innerHTML=document.getElementById("q-30").innerHTML;
+			break;
+			case 31: document.getElementById("q-container").innerHTML=document.getElementById("q-31").innerHTML;
+			break;
+			case 32: document.getElementById("q-container").innerHTML=document.getElementById("q-32").innerHTML;
+			break;
+			case 33: document.getElementById("q-container").innerHTML=document.getElementById("q-33").innerHTML;
+			break;
+			case 34: document.getElementById("q-container").innerHTML=document.getElementById("q-34").innerHTML;
+			break;
+			case 35: document.getElementById("q-container").innerHTML=document.getElementById("q-35").innerHTML;
+			break;
+			case 36: document.getElementById("q-container").innerHTML=document.getElementById("q-36").innerHTML;
+			break;
+			case 37: document.getElementById("q-container").innerHTML=document.getElementById("q-37").innerHTML;
+			break;
+			case 38: document.getElementById("q-container").innerHTML=document.getElementById("q-38").innerHTML;
+			break;
+			case 39: document.getElementById("q-container").innerHTML=document.getElementById("q-39").innerHTML;
+			break;
+			case 40: document.getElementById("q-container").innerHTML=document.getElementById("q-40").innerHTML;
+			break;
+
 			default: alert("nothing matched");
 		}
 	}
@@ -189,10 +251,12 @@ var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0, audio1=0;
 	function nextRight() {
 		rightscore();
 		nextClick();
+		playQ();
 	}
 	function nextWrong() {
 		wrongscore();
 		nextClick();
+		playQ();
 	}
 	function rtShowResult() {
 		rightscore();
