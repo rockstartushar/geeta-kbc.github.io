@@ -108,7 +108,7 @@ var que=1, rtclick=0, wgclick=0, i=0, op, timetaken=0, kbcaudio=0, audio1=0;
 
 	function enterGame() {
 		var key = document.getElementById("key").value;
-		if(key === 'kbc' || key === 'kbc2') {
+		if(key === 'harekrishna' || key === 'haribol') {
 			audio1.pause();
 			audio1.remove();
 			var name = document.getElementById("name").value;
